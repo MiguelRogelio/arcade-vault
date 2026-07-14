@@ -157,7 +157,7 @@ export function GamePlayer({ game }: { game: Game }) {
               </button>
               <button
                 className="btn magenta"
-                onClick={() => router.push("/")}
+                onClick={() => router.push("/juegos")}
               >
                 VOLVER AL VAULT
               </button>

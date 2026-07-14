@@ -13,10 +13,11 @@ export function Nav() {
   const { user, signOut } = useUser();
   const [open, setOpen] = useState(false);
 
-  // Biblioteca queda activa también en Detalle (/juego) y Reproductor (/jugar),
-  // que son navegación "dentro del vault".
+  // Inicio (Home) es la ruta raíz. Biblioteca queda activa en /juegos y también en
+  // Detalle (/juego) y Reproductor (/jugar), que son navegación "dentro del vault".
+  const inicioActive = pathname === "/";
   const libActive =
-    pathname === "/" ||
+    pathname === "/juegos" ||
     pathname.startsWith("/juego") ||
     pathname.startsWith("/jugar");
   const salonActive = pathname.startsWith("/salon");
@@ -34,7 +35,10 @@ export function Nav() {
           </div>
         </Link>
         <div className="links">
-          <Link href="/" className={libActive ? "active" : ""} onClick={close}>
+          <Link href="/" className={inicioActive ? "active" : ""} onClick={close}>
+            Inicio
+          </Link>
+          <Link href="/juegos" className={libActive ? "active" : ""} onClick={close}>
             Biblioteca
           </Link>
           <Link
@@ -76,7 +80,10 @@ export function Nav() {
         <div className="pixel neon-cyan" style={{ fontSize: 11, marginBottom: 16 }}>
           MENÚ
         </div>
-        <Link href="/" className={libActive ? "active" : ""} onClick={close}>
+        <Link href="/" className={inicioActive ? "active" : ""} onClick={close}>
+          Inicio
+        </Link>
+        <Link href="/juegos" className={libActive ? "active" : ""} onClick={close}>
           Biblioteca
         </Link>
         <Link
